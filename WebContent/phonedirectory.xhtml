@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+<h:head>
+
+	<style>
+	
+input{
+
+margin: 8px 0;
+	padding: 12px 20px;
+	border: 2px solid green;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+h1 {
+	padding-left: 600px;
+}
+
+.id {
+	width: 10%;
+}
+
+.addform{
+
+padding-top: 200px;
+padding-left: 300px;
+
+}
+</style>
+	<title>Phone Directory</title>
+
+</h:head>
+
+<h:body>
+
+
+	<h:form>
+		<div class="container">
+			<h1>Phone directory</h1>
+
+			<p:dataTable value="#{directory.userdirectory}" var="d"
+				rows="10"
+                     paginator="true"
+                     paginatorPosition="top"
+                     paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                     currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                     rowsPerPageTemplate="3,5,10,15,{ShowAll|'All'}">
+
+
+				<p:column>
+					<f:facet name="header">ID</f:facet>
+
+					<p:outputLabel id="ID" value="#{d.id}"></p:outputLabel>
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">First Name</f:facet>
+
+					<h:outputText value="#{d.firstName}"></h:outputText>
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Last Name</f:facet>
+					<p:outputLabel id="lastName" value="#{d.lastName}"></p:outputLabel>
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Phone Number</f:facet>
+					<p:outputLabel id="phoneNumber" value="#{d.phoneNumber}"></p:outputLabel>
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Email Address</f:facet>
+					<p:outputLabel id="emailAddress" value="#{d.emailAddress}"></p:outputLabel>
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">Address</f:facet>
+					<p:outputLabel id="address" value="#{d.address}"></p:outputLabel>
+				</p:column>
+
+
+					<p:column>
+					<f:facet name="header">Action</f:facet>
+					<p:commandLink value="Delete" action="#{directory.deleteAction(d)}" update="@form"></p:commandLink>
+
+				</p:column>
+
+
+			</p:dataTable>
+
+
+			
+		</div>
+		
+	</h:form>
+	<h:form>
+	
+	<div class="addform">
+	
+			ID:
+		<h:inputText id="id"></h:inputText>
+			<br></br>
+			First Name:
+		<h:inputText id="firstName"></h:inputText>
+			
+				Last Name:
+		<h:inputText id="lastName"></h:inputText>
+			<br></br>
+				Phone Number:
+		<h:inputText id="phoneNumber"></h:inputText>
+			
+				Email Address:
+		<h:inputText id="emailAddress"></h:inputText>
+			<br></br>
+				Address:
+		<h:inputText id="address"></h:inputText>
+				<br></br>
+	
+				<h:commandButton value="Add" action="#{directory.addAction(d)}"></h:commandButton>
+	</div>
+		
+	
+	
+	
+	</h:form>
+
+</h:body>
+
+
+</html>

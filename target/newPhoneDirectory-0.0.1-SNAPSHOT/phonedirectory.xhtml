@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+<h:head>
+
+	<style>
+h1 {
+	padding-left: 600px;
+}
+
+.id{
+	width: 10%;
+}
+</style>
+	<title>Phone Directory</title>
+
+</h:head>
+
+<h:body>
+
+
+	<h:form>
+<div class="container">
+		<h1>Phone Directory</h1>
+
+		<p:dataTable var="direct" value="#{directory.userdirectory}" paginator="true"
+			paginatorPosition="top"
+			paginatorTemplate=" {RowsPerPageDropdown}">
+
+			<div class="id">
+			<p:column>
+				<f:facet name="header">ID</f:facet>
+				<p:outputLabel id="ID" value="#{direct.id}"></p:outputLabel>
+			</p:column>
+</div>
+			<p:column>
+				<f:facet name="header">First Name</f:facet>
+				<p:outputLabel id="firstName" value="#{direct.firstName}"></p:outputLabel>
+			</p:column>
+
+			<h:column>
+				<f:facet name="header">Last Name</f:facet>
+				<p:outputLabel id="lastName" value="#{direct.lastName}"></p:outputLabel>
+			</h:column>
+
+			<h:column>
+				<f:facet name="header">Phone Number</f:facet>
+				<p:outputLabel id="phoneNumber" value="#{direct.phoneNumber}"></p:outputLabel>
+			</h:column>
+
+			<p:column>
+				<f:facet name="header">Email Address</f:facet>
+				<p:outputLabel id="emailAddress" value="#{direct.emailAddress}"></p:outputLabel>
+			</p:column>
+
+			<p:column>
+				<f:facet name="header">Address</f:facet>
+				<p:outputLabel id="address" value="#{direct.address}"></p:outputLabel>
+			</p:column>
+
+
+			<p:column>
+				<f:facet name="header">Action</f:facet>
+				<h:commandLink value="Delete" action="#{directory.deleteAction}"></h:commandLink>
+
+			</p:column>
+
+
+		</p:dataTable>
+
+</div>
+	</h:form>
+
+</h:body>
+
+
+</html>
